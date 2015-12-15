@@ -14,6 +14,14 @@
                                 <page string="Description">
                                     <field name="description"/>
                                 </page>
+				<page string="Sessions">
+                                    <field name="session_ids">
+                                        <tree string="Registered sessions" editable="bottom">
+                                            <field name="name"/>
+                                            <field name="instructor_id"/>
+                                        </tree>
+                                    </field>
+                            	</page>
                                 <page string="About">
                                     This is an example of notebooks
                                 </page>
@@ -57,17 +65,9 @@
             </field>
         </record>
 
-        <!-- top level menu: no parent -->
-        <menuitem id="main_openacademy_menu" name="Open Academy"/>
-        <!-- A first level in the left side menu is needed
-             before using action= attribute -->
-        <menuitem id="openacademy_menu" name="Open Academy"
-	          parent="main_openacademy_menu"/>
-        <!-- the following menuitem should appear *after*
-             its parent openacademy_menu and *after* its
-             action course_list_action -->
-        <menuitem id="courses_menu" name="Courses" parent="openacademy_menu"
-                  action="course_list_action"/>
+        <menuitem id="main_openacademy_menu" name="OpenAcademy Course"/>
+       	    <menuitem id="openacademy_menu" name="OpenAcademy Course" parent="main_openacademy_menu"/>
+                <menuitem id="courses_menu" name="Courses" parent="openacademy_menu" action="course_list_action"/>
 	
     </data>
 </openerp>
