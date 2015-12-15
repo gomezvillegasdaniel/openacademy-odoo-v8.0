@@ -21,7 +21,8 @@
 
     # always loaded
     'data': [
-	'view/openacademy.xml',
+	'view/openacademy_course_view.xml',
+	'view/openacademy_session_view.xml',
         #'security/ir.model.access.csv',
         #'templates.xml',
     ],
