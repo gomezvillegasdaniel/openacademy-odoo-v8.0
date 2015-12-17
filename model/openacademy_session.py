@@ -22,6 +22,11 @@ class Session(models.Model):
     hours = fields.Float(string="Duration in hours", compute='_get_hours', inverse='_set_hours')
     attendees_count = fields.Integer(string="Attendees count", compute='_get_attendees_count', store=True)
     color = fields.Integer()
+    state = fields.Selection([
+                            ('draft', 'Draft'),
+                            ('confirmed', 'Confirmed'),
+                            ('done', 'Done'),
+                            ], default='draft', readonly=True)
 
     @api.one
     @api.depends('seats', 'attendee_ids')
@@ -79,7 +84,7 @@ class Session(models.Model):
         start_date = fields.Datetime.from_string(self.start_date)
         end_date = fields.Datetime.from_string(self.end_date)
         self.duration = (end_date - start_date).days + 1
-    
+
     @api.one
     @api.depends('duration')
     def _get_hours(self):
@@ -93,6 +98,17 @@ class Session(models.Model):
     def _get_attendees_count(self):
         self.attendees_count = len(self.attendee_ids)
 
+    @api.one
+    def action_draft(self):
+        self.state = 'draft'
+
+    @api.one
+    def action_confirm(self):
+        self.state = 'confirmed'
+
+    @api.one
+    def action_done(self):
+        self.state = 'done'
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
