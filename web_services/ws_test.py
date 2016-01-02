@@ -48,4 +48,3 @@ new_sesion_id = call(model, method_name, {
      })
 print "new_sesion_id",new_sesion_id
 
-
