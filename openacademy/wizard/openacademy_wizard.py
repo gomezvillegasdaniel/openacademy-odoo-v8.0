@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
-
 from openerp import api, fields, models
-
 
 class Wizard(models.TransientModel):
     _name = 'openacademy.wizard'
     
     def _default_session(self):
-        print "self._context", self._context
+        #print "self._context", self._context
         return self.env['openacademy.session'].browse(self._context.get('active_ids'))
     
     session_wiz_ids = fields.Many2many('openacademy.session', string='Session', required=True, default=_default_session)
