@@ -21,13 +21,13 @@
 
     # always loaded
     'data': [
+    'security/security.xml',
+    'security/ir.model.access.csv',
 	'view/openacademy_course_view.xml',
 	'view/openacademy_session_view.xml',
 	'view/partner_view.xml',
     'view/openacademy_wizard_view.xml',
     'workflow/openacademy_session_workflow.xml',
-    'security/security.xml',
-    'security/ir.model.access.csv',
     'report/openacademy_session_report.xml',
     'view/openacademy_session_board.xml',
         #'templates.xml',
